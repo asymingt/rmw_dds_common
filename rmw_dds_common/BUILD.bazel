@@ -15,43 +15,19 @@
 
 # Imports
 
-load("@ros//:defs.bzl", "ros_interface", "ros_data")
+load("@ros//:defs.bzl", "ros_data")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rosidl_generator_c//:rules.bzl", "c_ros_library")
 load("@rosidl_generator_cpp//:rules.bzl", "cc_ros_library")
 
 package(default_visibility = ["//visibility:public"])
 
-# Interfaces
-
-ros_interface(
-    name = "msg__Gid",
-    src = "msg/Gid.msg",
-)
-
-ros_interface(
-    name = "msg__NodeEntitiesInfo",
-    src = "msg/NodeEntitiesInfo.msg",
-    deps = [
-        ":msg__Gid",
-    ],
-)
-
-ros_interface(
-    name = "msg__ParticipantEntitiesInfo",
-    src = "msg/ParticipantEntitiesInfo.msg",
-    deps = [
-        ":msg__Gid",
-        ":msg__NodeEntitiesInfo",
-    ],
-)
-
 cc_ros_library(
     name = "cc_msgs",
     deps = [
-        ":msg__Gid",
-        ":msg__NodeEntitiesInfo",
-        ":msg__ParticipantEntitiesInfo",
+        "//msg:Gid",
+        "//msg:NodeEntitiesInfo",
+        "//msg:ParticipantEntitiesInfo",
     ],
 )
 
@@ -78,7 +54,7 @@ cc_library(
     ],
 )
 
-# ROS C/C++ binaries
+# Tests
 
 cc_test(
     name = "benchmark_graph_cache",
