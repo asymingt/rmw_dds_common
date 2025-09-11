@@ -15,7 +15,6 @@
 
 # Imports
 
-load("@ros//:defs.bzl", "ros_data")
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("@rosidl_generator_c//:rules.bzl", "c_ros_library")
 load("@rosidl_generator_cpp//:rules.bzl", "cc_ros_library")
