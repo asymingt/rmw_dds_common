@@ -71,7 +71,6 @@ cc_test(
         ":rmw_dds_common",
     ],
     timeout = "short",
-    tags = ["exclusive"],
 )
 
 [
